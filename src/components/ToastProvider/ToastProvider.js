@@ -1,6 +1,8 @@
 import React from 'react';
 
-import useEscapeKey from '../../hooks/useEscapeKey';
+import useKeydown from '../../hooks/use-keydown';
+
+import { VARIANT_OPTIONS } from '../../constants';
 
 export const ToastContext = React.createContext();
 
@@ -11,9 +13,9 @@ function ToastProvider({ children }) {
     setToasts([]);
   }, []);
 
-  useEscapeKey(handleEscape);
+  useKeydown('Escape', handleEscape);
 
-  function addToast({ variant, message }) {
+  function addToast(message, variant = VARIANT_OPTIONS[0]) {
     const nextToasts = [
       ...toasts,
       {

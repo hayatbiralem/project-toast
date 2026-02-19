@@ -8,7 +8,8 @@ import ToastShelf from '../ToastShelf';
 
 import { ToastContext } from '../ToastProvider';
 
-const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
+import { VARIANT_OPTIONS } from '../../constants';
+
 const MESSAGE_EXAMPLES = {
   notice: '16 photos have been uploaded',
   warning: 'You have been warned!',
@@ -29,10 +30,8 @@ function ToastPlayground() {
   function handleSubmit(event) {
     event.preventDefault();
     addToast(
-      {
-        variant,
-        message
-      }
+      message,
+      variant
     );
   }
 
